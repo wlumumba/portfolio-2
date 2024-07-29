@@ -4,16 +4,10 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <h1>
-        kavinvalli:$ <span className={styles.help}>type help to start</span>
+    <div className="min-h-screen p-2 flex flex-col justify-center h-screen min-w-lg mx-auto">
+      <h1 className="text-2xl font-bold mb-4">
+        ~ wycliff.lumumba:$ <span className="text-gray-500">browse my portfolio!</span>
       </h1>
-      <p>
-        Visit{" "}
-        <a href="https://n.kavin.me" target="_blank" rel="noreferrer">
-          Normal website
-        </a>
-      </p>
 
       <Terminal />
     </div>
