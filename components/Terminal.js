@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { CONTENTS } from "../utils/commandHelper";
 import Command from "./Command";
+import CommandList from "./CommandList";
 import styles from "./Terminal.module.css";
 
 export default function Terminal() {
@@ -41,10 +42,11 @@ export default function Terminal() {
   return (
     <div className={styles.terminal} ref={terminalRef}>
       {/* <Command command="help" output="Some very long text will go in here" /> */}
-      {commands.map(({ command, output }, index) => (
+      {/* {commands.map(({ command, output }, index) => (
         <Command command={command} output={output} key={index} />
       ))}
-      {!loading && <Command onSubmit={(command) => addCommand(command)} />}
+      {!loading && <Command onSubmit={(command) => addCommand(command)} />} */}
+      <CommandList />
     </div>
   );
 }
