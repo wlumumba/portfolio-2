@@ -1,16 +1,16 @@
 import React from "react"
 import { COMMANDS } from "../utils/commandHelper"
 
-function CommandItem({ command, description }) {
+function CommandItem({ command, description, onClick }) {
 	return (
-		<div className="flex justify-between">
+		<div className="flex justify-between" onClick={onClick}>
 			<p className="text-sm">{command}</p>
 			<p>{description}</p>
 		</div>
 	)
 }
 
-export default function CommandList() {
+export default function CommandList({ onCommandClick }) {
 	return (
 		<div>
 			<div className="flex items-center space-x-2 mb-1">
@@ -26,6 +26,7 @@ export default function CommandList() {
 						key={command.command}
 						command={command.command}
 						description={command.description}
+						onClick={() => onCommandClick(command)}
 					/>
 				))}
 				<br />

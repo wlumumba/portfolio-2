@@ -2,51 +2,39 @@
 
 import { useRef, useState } from "react";
 import { CONTENTS } from "../utils/commandHelper";
-import Command from "./Command";
 import CommandList from "./CommandList";
-import styles from "./Terminal.module.css";
+
+const CommandDetails = ({ command }) => (
+  <div className="flex flex-col mt-4">
+    <div className="flex items-center space-x-2 mb-1">
+				<span className="text-[#ff9e64]">λ</span>
+				<span>::</span>
+				<span className="text-primary">~</span>
+				<span className="text-secondary">&gt;&gt;</span>
+                <span>/{command.command}</span>
+		</div>
+    <p>{command.description}</p>
+    {/* Add more details as needed */}
+  </div>
+);
 
 export default function Terminal() {
-  const [commands, setCommands] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [selectedCommand, setSelectedCommand] = useState(null);
   const terminalRef = useRef(null);
 
-  const escapeHTML = (str) =>
-    str
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
 
-  const addCommand = async (command) => {
-    let output;
-    setLoading(true);
-    setCommands([...commands, { command, output: "Loading..." }]);
-    if (`${command}` in CONTENTS) {
-      output = await CONTENTS[`${command}`]();
-    } else if (command === "clear") {
-      setLoading(false);
-      return setCommands([]);
+  const handleCommandClick = (command) => {
+    if (command.command !== 'clear') {
+      setSelectedCommand(command);
     } else {
-      output = CONTENTS.error(escapeHTML(command));
-    }
-
-    setLoading(false);
-    setCommands([...commands.slice(0, commands.length), { command, output }]);
-    if (terminalRef) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      setSelectedCommand(null);
     }
   };
 
   return (
-    <div className={styles.terminal} ref={terminalRef}>
-      {/* <Command command="help" output="Some very long text will go in here" /> */}
-      {/* {commands.map(({ command, output }, index) => (
-        <Command command={command} output={output} key={index} />
-      ))}
-      {!loading && <Command onSubmit={(command) => addCommand(command)} />} */}
-      <CommandList />
+    <div className={"max-h-[calc(100vh-160px)] mb-5 overflow-y-scroll scrollbar-hide"} ref={terminalRef}>
+      <CommandList onCommandClick={handleCommandClick} />
+      {selectedCommand && <CommandDetails command={selectedCommand} />}
     </div>
   );
 }
