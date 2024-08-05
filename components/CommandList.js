@@ -3,7 +3,7 @@ import { COMMANDS } from "../utils/commandHelper"
 
 function CommandItem({ command, description, onClick }) {
 	return (
-		<div className="flex justify-between" onClick={onClick}>
+		<div className="flex justify-between cursor-pointer hover:text-secondary focus:text-secondary focus:outline-none" onClick={onClick}>
 			<p className="text-sm">{command}</p>
 			<p>{description}</p>
 		</div>

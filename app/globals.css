@@ -70,3 +70,16 @@ h3 {
 a {
   color: var(--secondary);
 }
+
+@keyframes typewriter {
+  from { border-color: transparent; }
+  to { border-color: black; }
+}
+
+.animate-typewriter {
+  animation: typewriter 0.5s steps(1) infinite;
+}
+
+.animate-pulse {
+  animation: pulse 1s infinite;
+}
