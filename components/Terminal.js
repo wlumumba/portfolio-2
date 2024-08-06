@@ -13,6 +13,7 @@ const CommandDetails = ({ command }) => (
 			<span className="text-secondary">&gt;&gt;</span>
 			<span>/{command.command}</span>
 		</div>
+
 		<FlyIn key={command.command} delay={0}>
 			<div
 				className="ml-2"
@@ -42,9 +43,7 @@ export default function Terminal() {
 			ref={terminalRef}
 		>
 			<CommandList onCommandClick={handleCommandClick} />
-			{selectedCommand && (
-				<CommandDetails command={selectedCommand} />
-			)}
+			{selectedCommand && <CommandDetails command={selectedCommand} />}
 		</div>
 	)
 }
