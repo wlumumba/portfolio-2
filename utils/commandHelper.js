@@ -14,11 +14,29 @@ export const COMMANDS = [
 		command: "about",
 		description: "About Me",
 		content: `
-			<div class="flex flex-col items-center mt-4 mb-4">
-				<img src="/images/headshot1_cleanup.jpeg" alt="Headshot" class="w-full max-w-[13rem] h-auto rounded-full shadow-md shadow-gray-900" />
-			</div>
 			Wycliff Lumumba currently works as a backend Software Developer for a global payments company.<br/><br/> He has more than ${new Date().getFullYear() - 2022} years of experience coding with Java, Python, Cloud Computing and building distributed systems for scale.<br/><br/> Outside of work, Wycliff enjoys 3D printing as a hobby, staying updated with the latest industry news, and connecting with aspiring developers. He is committed to continuous learning and is always looking for opportunities to expand his skill set.
 		`,
+	},
+	{
+		command: "projects",
+		description: "Projects",
+		projects: [
+			{
+				src: "/images/providers.jpeg",
+				title: "StreamEZ Streaming Service",
+				description: "An API-driven, dynamic web application designed to help users find which streaming platforms host their favorite movies and shows.",
+			},
+			{
+				src: "/images/sorting.gif",
+				title: "Algorithm Sorting Visualizer",
+				description: "Developed a Java application for visualizing common sorting algorithms in real-time via Java",
+			},
+			{
+				src: "/images/traffic.jpeg",
+				title: "Traffic Simulator",
+				description: "Visually demonstrated cars moving through road intersections using graph and stack data structures to reach their destination.",
+			},
+		],
 	},
 	{
 		command: "education",
@@ -33,17 +51,14 @@ export const COMMANDS = [
 			"Wycliff is highly proficient working with Python, Java and C. Beyond that, his technical expertise includes the following technologies:<br/><br/><span class=\"text-secondary\">Languages: </span>Python, Java, C/C++, JavaScript, Bash, SQL, PHP, CSS<br /><span class=\"text-secondary\">Frameworks: </span>React, NodeJS, Express, Elasticsearch, Git, Jenkins, Nginx<br /><span class=\"text-secondary\">Database: </span>Redis, MongoDB, Postgres, mySQL, Aurora, DynamoDB",
 	},
 	{
-		command: "projects",
-		description: "My Latest Projects",
-	},
-	{
 		command: "contact",
 		description: "Contact Me",
 		content: getContactContent(),
 	},
 	{
 		command: "blog",
-		description: "Visit my blog",
+		description: "See my blog",
+		content: "Coming Soon!",
 	},
 	{
 		command: "clear",
