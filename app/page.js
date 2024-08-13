@@ -19,7 +19,7 @@ export default function Home() {
             cursor
             cursorBlinking={false}
             typeSpeed={100}
-            delaySpeed={1000}
+            delaySpeed={2000}
           />
         </span>
       </h1>
